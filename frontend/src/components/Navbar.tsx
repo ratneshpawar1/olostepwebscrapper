@@ -34,10 +34,12 @@ const Navbar: React.FC<NavbarProps> = ({
                 <a
                   key={data.id}
                   href="#"
+                  role="button"  // Add this for better accessibility
                   onClick={(e) => {
                     e.preventDefault(); // Prevent default link behavior
                     onSelectSavedData(data.id);
                   }}
+                  style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
                 >
                   {new URL(data.url).hostname}
                 </a>
