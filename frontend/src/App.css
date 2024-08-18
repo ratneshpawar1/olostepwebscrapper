@@ -1,38 +1,172 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  width: 100%;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: space-between; /* Ensures logo and menu are spaced out */
+  align-items: center; /* Vertically center the items */
+  padding: 15px 2px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.navbar-menu {
+  position: relative;
+}
+
+.dropdown-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+.dropdown-menu p {
+  margin: 0;
+  padding: 10px;
+  color: #666;
+  font-size: 14px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 70px;
+  padding: 20px;
+}
+
+.intro-text {
+  margin-bottom: 40px;
+}
+
+.intro-text h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.intro-text .highlight {
+  color: #ffa500;
+}
+
+.intro-text p {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.scrape-form {
+  margin-top: 20px;
+}
+
+.scrape-input {
+  width: calc(100% - 100px);
+  max-width: 500px;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #b3c6e0;
+  border-radius: 5px;
+}
+
+.scrape-button {
+  padding: 15px 20px;
+  font-size: 16px;
+  background-color: black;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.results {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e6ebf1;
+  border-radius: 10px;
+  display: inline-block;
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: auto; /* Enable vertical scroll */
+  width: calc(100% - 40px);
+  max-width: 800px; /* Max width of the results container */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.scraped-content {
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #333;
+}
+
+.save-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+.save-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
