@@ -3,6 +3,12 @@ import React from 'react';
 const IntroText: React.FC = () => {
   return (
     <div className="intro-text">
+      <p className="created-by">
+        Created by Ratnesh Pawar
+        <a href="https://www.ratneshpawar.bio/" target="_blank" rel="noopener noreferrer">
+          <span className="portfolio-icon">🔗</span>
+        </a>
+      </p>
       <h1>
         Scrap the web Data with <span className="magic">MAGIC</span>
       </h1>
