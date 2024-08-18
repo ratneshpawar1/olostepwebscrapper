@@ -1,172 +1,267 @@
+/* Light Mode Variables */
+:root {
+  --navbar-bg: #3b3f5c;
+  --text-color: #333;
+  --bg-color: #fff;
+  --border-color: #b3c6e0;
+  --hover-color: #2a2d42;
+  --highlight-color: #ffa500;
+  --highlight-hover-color: #ff4500;
+  --input-bg: #fff;
+  --input-border: #b3c6e0;
+}
+
+/* Dark Mode Variables */
+html.theme-dark {
+  --navbar-bg: #1f1f2e;
+  --text-color: #e0e0e0;
+  --bg-color: #121212;
+  --border-color: #5c5f72;
+  --hover-color: #1a1a28;
+  --highlight-color: #ffd700;
+  --highlight-hover-color: #ffa500;
+  --icon-color: #ffd700; /* Icon color in dark mode */
+  --icon-hover-color: #ffa500; /* Icon hover color in dark mode */
+}
+
+/* General Styles */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.App {
-  text-align: center;
-}
-
+/* Navbar Styles */
 .navbar {
   width: 100%;
-  background-color: #f0f4f8;
+  background-color: var(--navbar-bg);
   display: flex;
-  justify-content: space-between; /* Ensures logo and menu are spaced out */
-  align-items: center; /* Vertically center the items */
-  padding: 15px 2px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px; /* Adjusted padding for better spacing */
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-logo {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: left;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-left: 20px; /* Ensuring some space on the left */
 }
 
 .navbar-menu {
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-button {
   background: none;
   border: none;
-  font-size: 16px;
+  font-size: 1rem;
+  color: #fff;
   cursor: pointer;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 50px;
+  position: relative;
+  padding: 5px 15px; /* Adjusted padding */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+  background-color: var(--hover-color); /* Subtle hover effect */
 }
 
 .dropdown-menu {
   position: absolute;
+  margin: 20px;
+  margin-right: 80px;
+  top: 35px; /* Positioned slightly lower */
   right: 0;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 5px;
-  z-index: 1001;
 }
 
 .dropdown-menu a {
   display: block;
-  padding: 5px 10px;
+  padding: 10px 15px;
   text-decoration: none;
-  color: black;
-  font-size: 14px;
+  color: var(--text-color);
+  font-size: 0.9rem;
 }
 
 .dropdown-menu p {
   margin: 0;
   padding: 10px;
-  color: #666;
-  font-size: 14px;
+  color: var(--text-color);
+  font-size: 0.9rem;
 }
 
-.App-header {
-  margin-top: 70px;
-  padding: 20px;
-}
-
+/* Intro Text Styles */
 .intro-text {
-  margin-bottom: 40px;
+  margin-top: 120px; /* Space to compensate for the fixed navbar */
+  text-align: center;
+  padding: 20px;
 }
 
 .intro-text h1 {
-  font-size: 36px;
-  color: #333;
+  color: var(--navbar-bg);
+  font-size: 2.2rem;
+  margin-bottom: 10px;
 }
 
-.intro-text .highlight {
-  color: #ffa500;
+.intro-text .magic {
+  color: var(--highlight-color); /* Initial color for "MAGIC" */
+  font-weight: bold; /* Make the word bold */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.intro-text .magic:hover {
+  color: var(--highlight-hover-color); /* Color on hover */
 }
 
 .intro-text p {
-  font-size: 18px;
-  color: #666;
-  max-width: 600px;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  max-width: 800px;
   margin: 0 auto;
 }
 
+/* Form Styles */
 .scrape-form {
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
 }
 
 .scrape-input {
-  width: calc(100% - 100px);
-  max-width: 500px;
+  width: 50%;
   padding: 15px;
-  font-size: 16px;
-  border: 2px solid #b3c6e0;
-  border-radius: 5px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  border: 2px solid var(--input-border);
+  border-radius: 50px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.scrape-input:focus {
+  border-color: var(--navbar-bg);
 }
 
 .scrape-button {
-  padding: 15px 20px;
-  font-size: 16px;
-  background-color: black;
-  color: white;
+  padding: 15px 30px;
+  font-size: 1rem;
+  margin-left: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
+  background-color: var(--navbar-bg);
+  color: #fff;
   cursor: pointer;
-  margin-left: 10px;
+  transition: background-color 0.3s ease;
 }
 
+.scrape-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Results Container */
 .results {
-  margin-top: 20px;
+  margin: 40px auto;
   padding: 20px;
-  background-color: #e6ebf1;
+  width: 80%;
+  max-width: 800px;
+  background-color: var(--bg-color);
   border-radius: 10px;
-  display: inline-block;
-  max-height: 300px; /* Adjust as needed */
-  overflow-y: auto; /* Enable vertical scroll */
-  width: calc(100% - 40px);
-  max-width: 800px; /* Max width of the results container */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.results-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.copy-icon, .download-icon {
+  font-size: 1.25rem;
+  color: var(--icon-color);
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.copy-icon:hover, .download-icon:hover {
+  color: var(--icon-hover-color);
+}
+
+/* Loader Container */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }
 
 .scraped-content {
-  text-align: left;
   white-space: pre-wrap;
   word-wrap: break-word;
-  max-width: 100%;
-  margin: 0 auto;
-  color: #333;
+  color: var(--text-color);
 }
 
-.save-button {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* Dark Mode Toggle Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px; /* Reduced width */
+  height: 20px; /* Reduced height */
 }
 
-.logout-button {
-  padding: 10px;
-  margin-top: 10px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
-.save-button {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 5px;
+
+.slider {
+  position: absolute;
   cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px; /* Smooth rounded corners */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; /* Reduced size */
+  width: 16px; /* Reduced size */
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%; /* Make the knob circular */
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px); /* Adjust for the smaller size */
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

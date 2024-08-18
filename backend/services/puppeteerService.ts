@@ -18,3 +18,4 @@ export const scrapeWebsite = async (url: string): Promise<string> => {
 
   return scrapedContent;
 };
+  

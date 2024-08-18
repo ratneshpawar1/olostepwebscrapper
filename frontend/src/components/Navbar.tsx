@@ -1,4 +1,5 @@
 import React from "react";
+import DarkModeToggle from "./DarkModeToggle"; // Import the DarkModeToggle component
 
 interface SavedData {
   id: string;
@@ -9,7 +10,7 @@ interface NavbarProps {
   savedData: SavedData[];
   showDropdown: boolean;
   toggleDropdown: () => void;
-  onSelectSavedData: (id: string) => void; // New prop to handle selection
+  onSelectSavedData: (id: string) => void; 
 }
 
 const Navbar: React.FC<NavbarProps> = ({
@@ -22,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <nav className="navbar">
       <div className="navbar-logo">ScrapLeague</div>
       <div className="navbar-menu">
+        <DarkModeToggle /> {/* Add the DarkModeToggle component here */}
         <button className="dropdown-button" onClick={toggleDropdown}>
           Saved Data ▼
         </button>
@@ -29,7 +31,14 @@ const Navbar: React.FC<NavbarProps> = ({
           <div className="dropdown-menu">
             {savedData.length > 0 ? (
               savedData.map((data) => (
-                <a key={data.id} href="#" onClick={() => onSelectSavedData(data.id)}>
+                <a
+                  key={data.id}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    onSelectSavedData(data.id);
+                  }}
+                >
                   {new URL(data.url).hostname}
                 </a>
               ))

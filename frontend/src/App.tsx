@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import IntroText from "./components/IntroText";
 import ScrapeForm from "./components/ScrapeForm";
 import Results from "./components/Results";
+import DarkModeToggle from "./components/DarkModeToggle"; // Import the DarkModeToggle component
 
 interface SavedData {
   id: string;
@@ -16,49 +17,39 @@ function App() {
   const [error, setError] = useState("");
   const [savedData, setSavedData] = useState<SavedData[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (url: string) => {
+    setLoading(true);
     try {
       const response = await axios.post("http://localhost:5000/api/scrape", {
         url,
       });
       setScrapedData(response.data.data);
       setError("");
+      setLoading(false);
 
       const newSavedData: SavedData = {
-        id: response.data.id, // Assuming the backend returns the ID of the saved data
+        id: Date.now().toString(),
         url: url,
       };
-      setSavedData([...savedData, newSavedData]); // Add the new object to saved data
+      setSavedData([...savedData, newSavedData]);
     } catch (err) {
       setError("Failed to scrape the data.");
       setScrapedData("");
+      setLoading(false);
     }
   };
 
-  const handleSaveData = () => {
-    if (scrapedData) {
-      const newSavedData: SavedData = {
-        id: Date.now().toString(), // You can replace this with a better ID generation method
-        url: scrapedData,
-      };
-      setSavedData([...savedData, newSavedData]);
+  const handleSelectSavedData = (id: string) => {
+    const selectedData = savedData.find((data) => data.id === id);
+    if (selectedData) {
+      handleSubmit(selectedData.url);
     }
   };
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
-  };
-
-  const handleSelectSavedData = async (id: string) => {
-    try {
-      const response = await axios.get(`http://localhost:5000/api/scraped-data/${id}`);
-      setScrapedData(response.data.data.content); // Assuming 'content' is where the scraped data is stored
-      setError("");
-    } catch (err) {
-      setError("Failed to load saved data.");
-      setScrapedData("");
-    }
   };
 
   return (
@@ -67,11 +58,12 @@ function App() {
         savedData={savedData}
         showDropdown={showDropdown}
         toggleDropdown={toggleDropdown}
-        onSelectSavedData={handleSelectSavedData} // Pass the handler to Navbar
+        onSelectSavedData={handleSelectSavedData} // Pass the function here
       />
+      <DarkModeToggle /> {/* Add the DarkModeToggle component here */}
       <IntroText />
       <ScrapeForm onSubmit={handleSubmit} />
-      <Results scrapedData={scrapedData} error={error} onSave={handleSaveData} />
+      <Results scrapedData={scrapedData} error={error} loading={loading} />
     </div>
   );
 }

@@ -1,24 +1,20 @@
-import React from "react";
+import React from 'react';
 
 const IntroText: React.FC = () => {
   return (
-    <header className="App-header">
-      <div className="intro-text">
-        <h1>
-          Scrap the web Data with<span className="highlight"> Magic</span>
-        </h1>
-        <p>
-          Real-Time Web Scraper is a fast and efficient open-source web scraping
-          application. It swiftly extracts and displays data from any provided
-          URL in real-time, offering users immediate access to up-to-date
-          information. Perfect for developers, researchers, and anyone needing
-          instant data retrieval, this tool leverages advanced web scraping
-          techniques to ensure accurate and timely results. Experience the power
-          of real-time data extraction with the flexibility of our open-source
-          platform.
-        </p>
-      </div>
-    </header>
+    <div className="intro-text">
+      <h1>
+        Scrap the web Data with <span className="magic">MAGIC</span>
+      </h1>
+      <p>
+        Real-Time Web Scraper is a fast and efficient open-source web scraping application.
+        It swiftly extracts and displays data from any provided URL in real-time, offering
+        users immediate access to up-to-date information. Perfect for developers, researchers,
+        and anyone needing instant data retrieval, this tool leverages advanced web scraping
+        techniques to ensure accurate and timely results. Experience the power of real-time
+        data extraction with the flexibility of our open-source platform.
+      </p>
+    </div>
   );
 };
 

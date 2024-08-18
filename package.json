@@ -33,6 +33,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.3",
-    "puppeteer": "^23.1.0"
+    "puppeteer": "^23.1.0",
+    "react-loader-spinner": "^6.1.6"
   }
 }
