@@ -31,18 +31,21 @@ const Navbar: React.FC<NavbarProps> = ({
           <div className="dropdown-menu">
             {savedData.length > 0 ? (
               savedData.map((data) => (
-                <a
+                <button
                   key={data.id}
-                  href="#"
-                  role="button"  // Add this for better accessibility
-                  onClick={(e) => {
-                    e.preventDefault(); // Prevent default link behavior
-                    onSelectSavedData(data.id);
+                  onClick={() => onSelectSavedData(data.id)}
+                  style={{
+                    display: 'block',
+                    padding: '10px 15px',
+                    border: 'none',
+                    background: 'none',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    width: '100%',
                   }}
-                  style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
                 >
                   {new URL(data.url).hostname}
-                </a>
+                </button>
               ))
             ) : (
               <p>No data saved</p>
