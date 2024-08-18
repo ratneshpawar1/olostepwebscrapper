@@ -1,0 +1,2 @@
+MONGO_URI= 'Your MONGODB key'
+JWT_SECRET= "Generate a unique JWT key"
